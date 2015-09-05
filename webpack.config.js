@@ -9,7 +9,7 @@ module.exports = {
     filename: 'app.min.js'
   },
   plugins: [
-    new ExtractTextPlugin('./priv/static/css/app.css', {allChunks: true})
+    new ExtractTextPlugin('../css/app.css', {allChunks: true})
   ],
   module: {
     loaders: [
@@ -22,8 +22,8 @@ module.exports = {
         loader: 'babel-loader'
       },
       {
-        test: /web\/static\/css.*\.scss$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIndentName=[name]__[local]___[hash:base64:5]!sass!autoprefixer')
+        test: /web\/static.*\.scss$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass!autoprefixer')
       }
     ]
   },
