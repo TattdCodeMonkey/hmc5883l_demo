@@ -12,7 +12,7 @@ config :hmc5883l_demo, Hmc5883lDemo.Endpoint,
   code_reloader: true,
   cache_static_lookup: false,
   check_origin: false,
-  watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin"]]
+  watchers: [webpack: ["-d", "--progress", "--colors", "--watch"]]
 
 # Watch static and templates for browser reloading.
 config :hmc5883l_demo, Hmc5883lDemo.Endpoint,

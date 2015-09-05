@@ -1,5 +1,3 @@
-<div class="content">
-  <div class="compass">
-    <canvas id="compass" width="200" height="200"></canvas>
-  </div>
+<div id="content">
+  
 </div>

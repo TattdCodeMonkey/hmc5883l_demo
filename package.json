@@ -1,12 +1,19 @@
 {
-  "repository": {
-  },
+  "repository": {},
   "dependencies": {
-    "brunch": "^1.8.5",
-    "babel-brunch": "^5.1.1",
-    "clean-css-brunch": ">= 1.0 < 1.8",
-    "css-brunch": ">= 1.0 < 1.8",
-    "javascript-brunch": ">= 1.0 < 1.8",
-    "uglify-js-brunch": ">= 1.0 < 1.8"
+    "autoprefixer-core": "^5.2.1",
+    "autoprefixer-loader": "^2.0.0",
+    "babel-core": "^5.6.15",
+    "babel-loader": "^5.2.2",
+    "bootstrap": "^3.3.5",
+    "css-loader": "^0.16.0",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "jsx-loader": "^0.13.2",
+    "node-sass": "^3.2.0",
+    "postcss-loader": "^0.6.0",
+    "react": "^0.13.3",
+    "sass-loader": "^2.0.1",
+    "style-loader": "^0.12.3",
+    "webpack": "^1.10.0"
   }
 }

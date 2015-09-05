@@ -1,17 +1,26 @@
-import Compass from 'web/static/js/compass';
-import Socket from 'web/static/js/socket';
+import React from 'react';
+import Socket from './utils/socket';
+import Compass from './compass';
+import App from './containers/app';
 
-const App = {
-  init() {
-    Compass.init();
-    Socket.init();
+React.render(<App />, document.getElementById('content'));
 
-    Socket.update_heading = (degrees) => {
-      Compass.updateHeading(degrees);
-    };
-  }
-}
+Compass.init();
+Socket.update_heading = (degrees) => {
+  Compass.updateHeading(degrees);
+};
 
-App.init();
-
-export default App;
+Socket.init();
+//import Compass from 'web/static/js/compass';
+// const App = {
+//   init() {
+//     Compass.init();
+//     Socket.init();
+//
+//     Socket.update_heading = (degrees) => {
+//       Compass.updateHeading(degrees);
+//     };
+//   }
+// }
+//
+// App.init();

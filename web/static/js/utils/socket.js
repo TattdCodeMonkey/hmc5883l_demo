@@ -1,4 +1,4 @@
-import {Socket} from "deps/phoenix/web/static/js/phoenix"
+import {Socket} from "../../../../deps/phoenix/web/static/js/phoenix"
 
 const CompassSocket = {
   init() {
