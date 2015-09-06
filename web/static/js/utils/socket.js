@@ -1,4 +1,5 @@
 import {Socket} from "../../../../deps/phoenix/web/static/js/phoenix"
+import CompassActions from '../actions/compass';
 
 const CompassSocket = {
   init() {
@@ -13,9 +14,7 @@ const CompassSocket = {
       .receive("error", resp => { console.error("Unabled to join", resp) })
 
     channel.on("heading", payload => {
-      if (this.update_heading) {
-        this.update_heading(payload.heading);
-      }
+      CompassActions.receiveHeading(payload.heading);
     });
   }
 }

@@ -1,7 +1,7 @@
-import React from 'react';
-import Compass from '../components/compass';
+import React, { Component } from 'react';
+import Compass from './components/compass';
 
-const App = React.createClass({
+class App extends Component {
   render() {
     return (
       <div className="compass">
@@ -9,6 +9,6 @@ const App = React.createClass({
       </div>
     );
   }
-});
+}
 
 export default App;

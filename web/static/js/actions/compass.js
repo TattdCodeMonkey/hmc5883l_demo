@@ -1,7 +1,9 @@
-const CompassActions = {
-  updateCompassData(payload) {
+import alt from '../alt';
 
+class CompassActions {
+  receiveHeading(degrees) {
+    this.dispatch(degrees);
   }
-};
+}
 
-export default CompassActions;
+export default alt.createActions(CompassActions);

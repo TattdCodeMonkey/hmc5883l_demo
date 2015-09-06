@@ -1,6 +1,7 @@
 {
   "repository": {},
   "dependencies": {
+    "alt": "^0.17.3",
     "autoprefixer-core": "^5.2.1",
     "autoprefixer-loader": "^2.0.0",
     "babel-core": "^5.6.15",
@@ -13,8 +14,6 @@
     "node-sass": "^3.2.0",
     "postcss-loader": "^0.6.0",
     "react": "^0.13.3",
-    "react-redux": "^2.1.0",
-    "redux": "^2.0.0",
     "sass-loader": "^2.0.1",
     "style-loader": "^0.12.3",
     "webpack": "^1.10.0"

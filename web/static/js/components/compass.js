@@ -1,27 +1,42 @@
-import React from 'react';
+import React, {Component} from 'react';
+import CompassStore from '../stores/compass';
 
-const Compass = React.createClass({
-  getInitialState() {
-    return {
+class Compass extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       loaded: false,
       degrees: null,
       needleImg: null,
       compassImg: null,
       ctx: null
     };
-  },
+
+    this.onChange = this.onChange.bind(this);
+  }
 
   componentDidMount() {
     this._initCanvas();
-  },
+    CompassStore.listen(this.onChange);
+  }
+
+  componentWillUnmount() {
+    CompassStore.unlisten(this.onChange);
+  }
 
   shouldComponentUpdate() {
+    //Rendering is handled onChange by calling _drawCanvas
     return false;
-  },
+  }
 
   render() {
     return <canvas id="compass" width={this.props.size} height={this.props.size}></canvas>;
-  },
+  }
+
+  onChange(state) {
+    this.setState(state);
+    this._drawCanvas();
+  }
 
   _initCanvas() {
     console.log('init compass canvas');
@@ -39,14 +54,15 @@ const Compass = React.createClass({
       //load Compass
       stateUpdates.compassImg = new Image();
       stateUpdates.compassImg.onload = () => {
+        console.log('compass img loaded');
         this.setState({loaded: true});
-        setTimeout(this._drawCanvas, 1);
+        this._drawCanvas();
       };
       stateUpdates.compassImg.src = '/images/compass.png';
 
       this.setState(stateUpdates);
     }
-  },
+  }
 
   _clearCanvas() {
     if (!this.state.loaded) {
@@ -54,7 +70,7 @@ const Compass = React.createClass({
     }
 
     this.state.ctx.clearRect(0, 0, this.props.size, this.props.size);
-  },
+  }
 
   _drawCanvas() {
     if (!this.state.loaded) {
@@ -78,6 +94,6 @@ const Compass = React.createClass({
       ctx.restore();
     }
   }
-});
+}
 
 export default Compass;
