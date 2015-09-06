@@ -1,22 +1,16 @@
 import {Socket} from "../../../../deps/phoenix/web/static/js/phoenix"
 import CompassActions from '../actions/compass';
 
-const CompassSocket = {
-  init() {
-    let socket = new Socket("/socket")
+export function initCompassSocket() {
+  let socket = new Socket("/socket");
 
-    socket.connect({token: window.userToken})
+  socket.connect({token: window.userToken})
 
-    // Now that you are connected, you can join channels with a topic:
-    let channel = socket.channel("compass:data", {})
-    channel.join()
-      .receive("ok", resp => { console.log("Joined succesffuly", JSON.stringify(resp)) })
-      .receive("error", resp => { console.error("Unabled to join", resp) })
+  // Now that you are connected, you can join channels with a topic:
+  let channel = socket.channel("compass:data", {})
+  channel.join()
+    .receive("ok", resp => { console.log("Joined succesffuly", JSON.stringify(resp)) })
+    .receive("error", resp => { console.error("Unabled to join", resp) })
 
-    channel.on("heading", payload => {
-      CompassActions.receiveHeading(payload.heading);
-    });
-  }
-}
-
-export default CompassSocket;
+  channel.on("heading", CompassActions.receiveHeading);
+};

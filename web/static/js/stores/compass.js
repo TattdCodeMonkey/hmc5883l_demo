@@ -9,8 +9,8 @@ class CompassStore {
     this.bindActions(CompassActions);
   }
 
-  onReceiveHeading(heading) {
-    this.degrees = heading;
+  onReceiveHeading(payload) {
+    this.degrees = payload.heading;
   }
 }
 

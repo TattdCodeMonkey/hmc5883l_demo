@@ -20,11 +20,14 @@ defmodule Hmc5883lDemo.MockCompass do
   end
 
   def send_data(state) do
-    inc_heading = state.heading + @inc_int
+    inc_heading = increment_heading(state.heading)
     new_state = %{state| heading: inc_heading}
-    Hmc5883lDemo.Endpoint.broadcast!("compass:data", "heading", new_state)
+    Hmc5883lDemo.Endpoint.broadcast!("compass:data", "heading", %{heading: inc_heading})
 
     new_state
   end
+
+  def increment_heading(360), do: 0
+  def increment_heading(heading), do: heading + @inc_int
 
 end

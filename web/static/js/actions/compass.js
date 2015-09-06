@@ -1,8 +1,8 @@
 import alt from '../alt';
 
 class CompassActions {
-  receiveHeading(degrees) {
-    this.dispatch(degrees);
+  receiveHeading(payload) {
+    this.dispatch(payload);
   }
 }
 
