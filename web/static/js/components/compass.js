@@ -39,7 +39,6 @@ class Compass extends Component {
   }
 
   _initCanvas() {
-    console.log('init compass canvas');
     let canvas = document.getElementById('compass');
 
     let ctx = canvas.getContext('2d');
@@ -54,7 +53,6 @@ class Compass extends Component {
       //load Compass
       stateUpdates.compassImg = new Image();
       stateUpdates.compassImg.onload = () => {
-        console.log('compass img loaded');
         this.setState({loaded: true});
         this._drawCanvas();
       };
