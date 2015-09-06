@@ -27,7 +27,8 @@ defmodule Hmc5883lDemo.MockCompass do
     new_state
   end
 
-  def increment_heading(360), do: 0
+  def increment_heading(heading) when heading > 360, do: 0
+  def increment_heading(heading) when heading < 0, do: 360
   def increment_heading(heading), do: heading + @inc_int
 
 end

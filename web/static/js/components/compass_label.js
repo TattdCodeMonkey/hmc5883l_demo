@@ -25,16 +25,20 @@ class CompassLabel extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Heading</h2>
-        <h3>{this.renderHeading()}</h3>
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <h4 className="panel-title">Heading</h4>
+        </div>
+        <div className="panel-body">
+          <h3>{this.renderHeading()}</h3>
+        </div>
       </div>
     );
   }
 
   renderHeading() {
     if (this.state.degrees) {
-      return this.state.degrees.toString();
+      return this.state.degrees.toFixed(1);
     }
 
     return "---";
