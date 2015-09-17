@@ -1,32 +1,43 @@
 var webpack = require('webpack'),
-    path = require('path'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin');
+    path = require('path');
 
-module.exports = {
-  entry: './web/static/js/index.js',
-  output: {
-    path: './priv/static/js/',
-    filename: 'app.min.js'
+module.exports = [
+  {
+    name: 'app-js',
+    entry: './web/static/js/index.js',
+    output: {
+      path: './priv/static/js/',
+      filename: 'app.min.js'
+    },
+    module: {
+      loaders: [
+        {
+          test: /web\/static\/js.*\.jsx.js$/,
+          loader: 'jsx-loader'
+        },
+        {
+          test: /web\/static\/js.*\.js$/,
+          loader: 'babel-loader'
+        }
+      ]
+    },
+    externals: {
+    }
   },
-  plugins: [
-    new ExtractTextPlugin('../css/app.css', {allChunks: true})
-  ],
-  module: {
-    loaders: [
-      {
-        test: /web\/static\/js.*\.jsx.js$/,
-        loader: 'jsx-loader'
-      },
-      {
-        test: /web\/static\/js.*\.js$/,
-        loader: 'babel-loader'
-      },
-      {
-        test: /web\/static.*\.scss$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass!autoprefixer')
-      }
-    ]
-  },
-  externals: {
+  {
+    name: "app-styles",
+    entry: './web/static/css/app.scss',
+    output: {
+      path: './priv/static/css/',
+      filename: 'app.min.css.js'
+    },
+    module: {
+      loaders: [
+        {
+          test: /web\/static.*\.scss$/,
+          loader: 'style!css!sass'
+        }
+      ]
+    }
   }
-};
+];
