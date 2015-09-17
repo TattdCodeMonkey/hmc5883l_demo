@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Panel} from 'react-bootstrap';
 import CompassStore from '../stores/compass';
 
-class CompassLabel extends Component {
+class HeadingPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,4 +42,4 @@ class CompassLabel extends Component {
   }
 }
 
-export default CompassLabel;
+export default HeadingPanel;

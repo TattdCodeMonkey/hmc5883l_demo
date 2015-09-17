@@ -10,7 +10,9 @@ class CompassStore {
   }
 
   onReceiveHeading(payload) {
-    this.degrees = payload.heading;
+    if (payload && payload.heading) {
+      this.degrees = payload.heading;
+    }
   }
 }
 
