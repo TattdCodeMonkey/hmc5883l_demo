@@ -1,17 +1,14 @@
 import React, {Component} from 'react';
+import {Panel} from 'react-bootstrap';
 import Compass from './compass';
 
 class CompassPanel extends Component {
   render() {
+    let title = <h4>Compass</h4>;
     return (
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          <h4 className="panel-title">Compass</h4>
-        </div>
-        <div className="panel-body">
-          <Compass size="200" />
-        </div>
-      </div>
+      <Panel header={title} bsStyle="primary">
+        <Compass size="200" />
+      </Panel>
     );
   }
 }

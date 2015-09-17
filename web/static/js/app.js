@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
+import {Grid, Row, Col} from 'react-bootstrap';
 import CompassLabel from './components/compass_label';
 import CompassPanel from './components/compass_panel';
 
 class App extends Component {
   render() {
     return (
-      <div className="row">
-        <div className="col-sm-4">
-          <CompassLabel />
+      <Row>
+        <Col sm={4}>
           <CompassPanel />
-        </div>
-        <div className="col-sm-4">
-
-        </div>
-      </div>
+        </Col>
+        <Col sm={4}>
+          <CompassLabel />
+        </Col>
+      </Row>
     );
   }
 }

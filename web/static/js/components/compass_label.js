@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Panel} from 'react-bootstrap';
 import CompassStore from '../stores/compass';
 
 class CompassLabel extends Component {
@@ -24,15 +25,11 @@ class CompassLabel extends Component {
   }
 
   render() {
+    let title = <h4>Heading</h4>;
     return (
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          <h4 className="panel-title">Heading</h4>
-        </div>
-        <div className="panel-body">
-          <h3>{this.renderHeading()}</h3>
-        </div>
-      </div>
+      <Panel header={title}  bsStyle="info">
+        <h3>{this.renderHeading()}</h3>
+      </Panel>
     );
   }
 
