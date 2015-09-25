@@ -1,5 +1,6 @@
 var webpack = require('webpack'),
-    path = require('path');
+    path = require('path'),
+    ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = [
   {
@@ -29,15 +30,18 @@ module.exports = [
     entry: './web/static/css/app.scss',
     output: {
       path: './priv/static/css/',
-      filename: 'app.min.css.js'
+      filename: 'app.min.css'
     },
     module: {
       loaders: [
         {
           test: /web\/static.*\.scss$/,
-          loader: 'style!css!sass'
+          loader: ExtractTextPlugin.extract('style-loader', 'css!sass')
         }
       ]
-    }
+    },
+    plugins: [
+      new ExtractTextPlugin("app.min.css")
+    ]
   }
 ];
