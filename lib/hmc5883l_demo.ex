@@ -9,9 +9,7 @@ defmodule Hmc5883lDemo do
     children = [
       # Start the endpoint when the application starts
       supervisor(Hmc5883lDemo.Endpoint, []),
-      # Start the Ecto repository
-      worker(Hmc5883lDemo.Repo, [])
-    ] #++ Hmc5883lDemo.Utilities.operating_system |> compass
+    ] 
 
     compass_child = Hmc5883lDemo.Utilities.operating_system |> compass
     opts = [strategy: :one_for_one, name: Hmc5883lDemo.Supervisor]

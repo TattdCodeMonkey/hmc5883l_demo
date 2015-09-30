@@ -16,19 +16,11 @@ defmodule Hmc5883lDemo.Web do
   below.
   """
 
-  def model do
-    quote do
-      use Ecto.Model
-    end
-  end
-
   def controller do
     quote do
       use Phoenix.Controller
 
       alias Hmc5883lDemo.Repo
-      import Ecto.Model
-      import Ecto.Query, only: [from: 1, from: 2]
 
       import Hmc5883lDemo.Router.Helpers
     end
@@ -59,9 +51,6 @@ defmodule Hmc5883lDemo.Web do
       use Phoenix.Channel
 
       alias Hmc5883lDemo.Repo
-      import Ecto.Model
-      import Ecto.Query, only: [from: 1, from: 2]
-
     end
   end
 

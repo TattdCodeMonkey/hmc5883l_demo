@@ -14,8 +14,7 @@ defmodule Hmc5883lDemo.Mixfile do
 
   def application do
     [mod: {Hmc5883lDemo, []},
-     applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :postgrex] ++ otp_apps(operating_system)]
+     applications: [:phoenix, :phoenix_html, :cowboy, :logger] ++ otp_apps(operating_system)]
   end
 
   def otp_apps("Linux"), do: [:hmc5883l]
@@ -27,8 +26,6 @@ defmodule Hmc5883lDemo.Mixfile do
   defp deps do
     [
       {:phoenix, "~> 1.0.0"},
-      {:phoenix_ecto, "~> 1.1"},
-      {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.1"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:cowboy, "~> 1.0"}
