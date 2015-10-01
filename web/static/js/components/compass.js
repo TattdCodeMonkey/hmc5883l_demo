@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import CompassStore from '../stores/compass';
+import { connect } from 'react-redux';
+import { getHeading } from '../reducers/compass';
 
 class Compass extends Component {
   constructor(props) {
@@ -11,31 +12,19 @@ class Compass extends Component {
       compassImg: null,
       ctx: null
     };
-
-    this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {
     this._initCanvas();
-    CompassStore.listen(this.onChange);
   }
 
   componentWillUnmount() {
-    CompassStore.unlisten(this.onChange);
-  }
-
-  shouldComponentUpdate() {
-    //Rendering is handled onChange by calling _drawCanvas
-    return false;
+    //TODO: destroy canvas?
   }
 
   render() {
-    return <canvas id="compass" width={this.props.size} height={this.props.size}></canvas>;
-  }
-
-  onChange(state) {
-    this.setState(state);
     this._drawCanvas();
+    return <canvas id="compass" width={this.props.size} height={this.props.size}></canvas>;
   }
 
   _initCanvas() {
@@ -81,11 +70,11 @@ class Compass extends Component {
     ctx.drawImage(this.state.compassImg, 0, 0);
     ctx.save();
 
-    if (this.state.degrees) {
+    if (this.props.degrees) {
       //draw needle
       ctx.translate(100, 100);
 
-      ctx.rotate(this.state.degrees * (Math.PI / 180));
+      ctx.rotate(this.props.degrees * (Math.PI / 180));
 
       ctx.drawImage(this.state.needleImg, -100, -100);
 
@@ -94,4 +83,13 @@ class Compass extends Component {
   }
 }
 
-export default Compass;
+function mapStateToProps(state) {
+  return {
+    degrees: getHeading(state)
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  {}
+)(Compass);

@@ -1,7 +1,7 @@
 import {Socket} from "../../../../deps/phoenix/web/static/js/phoenix"
-import CompassActions from '../actions/compass';
+import { receiveHeading } from "../actions";
 
-export function initCompassSocket() {
+export function initCompassSocket(store, action) {
   let socket = new Socket("/socket");
 
   socket.connect({token: window.userToken})
@@ -12,5 +12,7 @@ export function initCompassSocket() {
     .receive("ok", resp => { console.log("Joined succesffuly", JSON.stringify(resp)) })
     .receive("error", resp => { console.error("Unabled to join", resp) })
 
-  channel.on("heading", CompassActions.receiveHeading);
+  channel.on("heading", function (payload) {
+    store.dispatch(receiveHeading(payload));
+  });
 };
